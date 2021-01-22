@@ -3,7 +3,7 @@ import traceback
 import json
 from flask import Flask, request
 
-token = "EAAFZCiTBka90BAAwfYJCZBYdbxZCMQDWbgWmhuJ8udZAzN6DOpZABuQby54ZCU6BL4596rEd8ZAiWk3swvOwcxMmTss2ypmiWwddm9jrRZAM6ZACFo3SpSC2coUJnu0AhxZC6rSGHI1KCP6bd467gmqZAo64mBZBhrPXYXYIKLZC3jdfxd2dZBx6i5RgYL"
+token = "token_facebook"
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def webhook():
@@ -28,7 +28,7 @@ def webhook():
             else:
                 payload = {'recipient': {'id': sender}, 'message': {'text': "Não tenho a resposta."}}
 
-            r = requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + 'EAAFZCiTBka90BAAwfYJCZBYdbxZCMQDWbgWmhuJ8udZAzN6DOpZABuQby54ZCU6BL4596rEd8ZAiWk3swvOwcxMmTss2ypmiWwddm9jrRZAM6ZACFo3SpSC2coUJnu0AhxZC6rSGHI1KCP6bd467gmqZAo64mBZBhrPXYXYIKLZC3jdfxd2dZBx6i5RgYL', json=payload)
+            r = requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + 'token_facebook', json=payload)
         except Exception as e:
             print(traceback.format_exc())
     elif request.method == 'GET': # Para a verificação inicial (configuração facebook)
